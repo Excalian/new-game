@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const MAX_SPEED = 200
+const MAX_SPEED: int = 200
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -9,14 +9,14 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	var direction = get_movement_vector().normalized()
+	var direction: Vector2 = get_movement_vector().normalized()
 	velocity = direction * MAX_SPEED
 	move_and_slide()
 
 
-func get_movement_vector():
-	var x_movement = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
-	var y_movement = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
+func get_movement_vector() -> Vector2:
+	var x_movement: int = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
+	var y_movement: int = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
 	
 	return Vector2(x_movement, y_movement)
 	
