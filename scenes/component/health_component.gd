@@ -5,6 +5,7 @@ signal died
 signal health_changed
 
 @export var max_health: float = 10
+
 var current_health: float
 
 
@@ -25,6 +26,9 @@ func get_health_percent():
 
 
 func check_death():
+	if owner == null:
+		return
+	
 	if current_health == 0:
 		died.emit()
 		owner.queue_free()
